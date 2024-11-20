@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Recipe Collection</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <img src="images/recipe (1).jpg" alt="Recipe Logo" class="logo">
+        <h1>Recipe App</h1>
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search for a recipe"
+                onkeyup="searchRecipes()"
+            >
+        </div>
+    </header>
+
+    <!-- Featured Section -->
+    <h2 class="section-title">Recipes of the Week</h2>
+
+    <!-- Recipe Grid -->
+    <div class="recipe-grid" id="recipeGrid">
+        <!-- Cheesecake -->
+        <div class="recipe-card" data-recipe="cheesecake">
+            <div class="recipe-image">
+                <img src="images/cheese cake.jpeg" alt="Cheese Cake">
+            </div>
+            <div class="recipe-content">
+                <h3>Classic Cheesecake</h3>
+                <button class="view-recipe" onclick="location.href='cheesecake.html'">
+                    Read More
+                </button>
+            </div>
+        </div>
+
+        <!-- Chocolate Cake -->
+        <div class="recipe-card" data-recipe="chocolate cake">
+            <div class="recipe-image">
+                <img src="images/chocolate cake.jpeg" alt="Chocolate Cake">
+            </div>
+            <div class="recipe-content">
+                <h3>Rich Chocolate Cake</h3>
+                <button class="view-recipe" onclick="location.href='chocolatecake.html'">
+                    Read More
+                </button>
+            </div>
+        </div>
+
+        <!-- Mixed Berries Cake -->
+        <div class="recipe-card" data-recipe="mixed berries cake">
+            <div class="recipe-image">
+                <img src="images/mixed berries cake.jpeg" alt="Mixed Berries Cake">
+            </div>
+            <div class="recipe-content">
+                <h3>Mixed Berry Delight</h3>
+                <button class="view-recipe" onclick="location.href='mixedberriescake.html'">
+                    Read More
+                </button>
+            </div>
+        </div>
+
+        <!-- Strawberry Cake -->
+        <div class="recipe-card" data-recipe="strawberry cake">
+            <div class="recipe-image">
+                <img src="images/strawberry cake.jpeg" alt="Strawberry Cake">
+            </div>
+            <div class="recipe-content">
+                <h3>Fresh Strawberry Cake</h3>
+                <button class="view-recipe" onclick="location.href='strawberry.html'">
+                    Read More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchRecipes() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const recipes = document.getElementsByClassName('recipe-card');
+            
+            Array.from(recipes).forEach(recipe => {
+                const recipeText = recipe.getAttribute('data-recipe').toLowerCase();
+                recipe.style.display = recipeText.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
